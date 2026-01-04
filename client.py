@@ -5,5 +5,5 @@ import socket
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
-message = client.recv(1024)
-print(message)
+message = client.recv(4096)
+print(f"message recieved{message.decode("utf-8")}")

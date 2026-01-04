@@ -9,6 +9,7 @@ NICKNAME = []
 CONNETION = []
 def handle_method(client_socket, message):
     print("hitting")
+    client_socket.sendall(message.encode('utf-8'))
     pass
 
 
