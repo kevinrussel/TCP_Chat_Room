@@ -8,6 +8,7 @@ import threading
 NICKNAME = []
 CONNETION = []
 def handle_method(client_socket, message):
+    print("hitting")
     client_socket.sendall(message.encode('utf-8'))
     pass
 
@@ -18,7 +19,6 @@ def connect_method():
     '''
     while True:
         (client_socket, address) = server.accept()
-        print("I have recieved the conneciton")
         print(f'The client socket_connection is {client_socket} and the address is {address}')
         thread = threading.Thread(target=handle_method, args=(client_socket,"Hello from Server"))
         thread.start()
