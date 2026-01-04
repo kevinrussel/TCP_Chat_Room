@@ -42,3 +42,4 @@ Import Threading and Socket
 
 How I am going about this:
 1) The first things I need to do is to figure out how to connect to my server via a client.
+2) The second goald I have right now is to send a message from the server socke to client

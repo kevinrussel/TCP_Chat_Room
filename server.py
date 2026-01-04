@@ -5,12 +5,23 @@ import threading
 
 
 
+NICKNAME = []
+CONNETION = []
+def handle_method(client_socket, message):
+    print("hitting")
+    pass
 
 
 def connect_method():
-    (client_socket, address) = server.accept()
-    print("I have recieved the conneciton")
-    print(f'The client socket_connection is {client_socket} and the address is {address}')
+    '''
+    This method is used to create a connection for new clients.
+    '''
+    while True:
+        (client_socket, address) = server.accept()
+        print("I have recieved the conneciton")
+        print(f'The client socket_connection is {client_socket} and the address is {address}')
+        thread = threading.Thread(target=handle_method, args=(client_socket,"Hello from Server"))
+        thread.start()
 ## Creating a new socket connection.
 
 
