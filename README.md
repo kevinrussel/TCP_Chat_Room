@@ -37,3 +37,8 @@ Import Threading and Socket
 
 ### Write method:
 - It should send a write command.
+
+
+
+How I am going about this:
+1) The first things I need to do is to figure out how to connect to my server via a client.
