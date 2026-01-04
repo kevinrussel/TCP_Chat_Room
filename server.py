@@ -3,9 +3,14 @@
 import socket
 import threading
 
+
+
+
+
 def connect_method():
     (client_socket, address) = server.accept()
     print("I have recieved the conneciton")
+    print(f'The client socket_connection is {client_socket} and the address is {address}')
 ## Creating a new socket connection.
 
 
