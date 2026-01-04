@@ -9,4 +9,19 @@
 - This will be the server which will handle ther connections and forward the messages to the other client.
 - As well as handling client's disconnecting. 
 
-# 
+#### Server Class Methods
+Import threading and import socket
+
+**Broadcast Method**
+- This method sends a method to all connections.
+
+**Handle Method**
+- Sends message to broadcast method
+- If this fails, close the connection
+- Tells others connections that the user left.
+
+**Receive Method**
+- Receieve client connection
+- Tells other users that the client is connected.
+
+
