@@ -25,3 +25,15 @@ Import threading and import socket
 - Tells other users that the client is connected.
 
 
+## Client Method
+
+Import Threading and Socket
+
+***Hint***: We shoiuld have two threads taking place, one that is the recieve and one that is write.
+
+### Recieve method:
+- Recieve the message from the server
+- Close connection if there is an error
+
+### Write method:
+- It should send a write command.
