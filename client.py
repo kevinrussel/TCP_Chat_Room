@@ -15,6 +15,7 @@ def recieve_message():
     print("We are in the recieve message")
     while True:
         message = client.recv(4096)
+        print(len(message))
         print(f"mnessage recieved {message.decode("utf-8")}")
 
 
