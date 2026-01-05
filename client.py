@@ -6,7 +6,7 @@ write = True
 stop = threading.Event()
 
 def write_message(stop):
-    while not stop.is_set():            
+    while True:            
         message = input()
         message = message.encode('utf-8')
         client.sendall(message)
@@ -28,7 +28,7 @@ def recieve_message():
     
 
 def create_connection():
-    message = threading.Thread(target=write_message, args=(stop,))
+    message = threading.Thread(target=write_message, args=(stop,), daemon=True)
     message.start()
 
     recieve = threading.Thread(target=recieve_message, args=())
