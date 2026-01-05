@@ -6,7 +6,6 @@ write = True
 stop = threading.Event()
 
 def write_message(stop):
-    
     while not stop.is_set():            
         message = input()
         message = message.encode('utf-8')
@@ -19,11 +18,10 @@ def recieve_message():
     
     while True:
         message = client.recv(4096) 
-        
         message = message.decode('utf-8')
-        
         print(f"{message}")
         if message == "Goodbye from server":
+            stop.set()
             break
     
     return
@@ -31,10 +29,10 @@ def recieve_message():
 
 def create_connection():
     message = threading.Thread(target=write_message, args=(stop,))
-    
     message.start()
-    recieve_message()
-    stop.set()
+
+    recieve = threading.Thread(target=recieve_message, args=())
+    recieve.start()
     return
 
 
