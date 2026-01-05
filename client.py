@@ -24,6 +24,8 @@ def recieve_message():
         if message == "Goodbye from server":
             print("hitting")
             break
+        elif len(message) == 0:
+            break
     print("in here")
     time.sleep(0.2)
     return
