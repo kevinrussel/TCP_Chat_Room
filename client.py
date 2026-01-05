@@ -25,9 +25,8 @@ def recieve_message():
             print("hitting")
             break
         elif len(message) == 0:
+            print("DISCONNECTED FROM SERVER")
             break
-    print("in here")
-    time.sleep(0.2)
     return
     
 
