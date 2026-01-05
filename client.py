@@ -5,7 +5,6 @@ client.connect(('127.0.0.1',8080))
 
 
 def write_message():
-    print("in here")
     while True:
         message = input()
         message = message.encode('utf-8')
@@ -15,11 +14,9 @@ def write_message():
 
 # We are going to be making a client right now for our server
 def recieve_message():
-    print("We are in the recieve message")
     while True:
         message = client.recv(4096)
-        print(len(message))
-        print(f"mnessage recieved {message.decode("utf-8")}")
+        print(f"message recieved {message.decode("utf-8")}")
 
 
 def create_connection():
