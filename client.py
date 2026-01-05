@@ -2,9 +2,9 @@ import threading
 import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
-
+write = True
 def write_message():
-    while True:
+    while write:
         message = input()
         message = message.encode('utf-8')
         client.sendall(message)
@@ -16,14 +16,21 @@ def recieve_message():
     
     while True:
         message = client.recv(4096)
-        print(f"{message.decode("utf-8")}")
+        
+        message = message.decode('utf-8')
+        
+        print(f"{message}")
+        if message == "Goodbye from server":
+            break
 
+    return
+    
 
 def create_connection():
-    message = threading.Thread(target=recieve_message, args=())
+    message = threading.Thread(target=write_message, args=())
     message.start()
-    write_message()
-
+    recieve_message()
+    return
 
 
 

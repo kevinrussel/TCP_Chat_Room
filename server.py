@@ -28,9 +28,12 @@ def handle_method(client_socket, message):
             for index, client in enumerate(CONNECTION):
                 if(client != client_socket):
                     broad_cast_message(client,f"{name} has disconnected!")
+                else:
+                    broad_cast_message(client, "Goodbye from server")
             CONNECTION.remove(client_socket)
             NICKNAME.remove(name)
             client_socket.close()
+            break
         else:
             message = f"{name}: "+ message
             for index, client in enumerate(CONNECTION):
