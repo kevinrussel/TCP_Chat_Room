@@ -6,9 +6,9 @@ write = True
 stop = threading.Event()
 
 def write_message(stop):
-    print("in write message")
+    
     while not stop.is_set():
-        
+            
         message = input()
         message = message.encode('utf-8')
         client.sendall(message)
