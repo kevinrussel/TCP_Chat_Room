@@ -1,11 +1,12 @@
 import threading
 import socket
+import threading, time
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
 write = True
 
 
-def write_message(stop):
+def write_message():
     while True:            
         message = input()
         message = message.encode('utf-8')
@@ -24,17 +25,24 @@ def recieve_message():
             print("hitting")
             break
     print("in here")
+    time.sleep(0.2)
     return
     
 
 def create_connection():
-    message = threading.Thread(target=write_message, args=(stop,), daemon=True)
+    message = threading.Thread(target=write_message, args=(), daemon=True)
     message.start()
-
-    recieve_message()
+    recieve = threading.Thread(target=recieve_message, args=())
+    recieve.start()
+    recieve.join()
+    for t in threading.enumerate():
+        print("THREAD:", t.name, "daemon=", t.daemon, "alive=", t.is_alive())
+    print("MAIN ABOUT TO RETURN")
     return
+    
 
 
 
 if __name__ == '__main__':
     create_connection()
+    
