@@ -25,6 +25,7 @@ def handle_method(client_socket, message):
             if (client == client_socket):
                 name = NICKNAME[index]
         if message == "exit":
+            print(f"{name} is leaving from server")
             for index, client in enumerate(CONNECTION):
                 if(client != client_socket):
                     broad_cast_message(client,f"{name} has disconnected!")

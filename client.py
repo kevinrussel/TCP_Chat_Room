@@ -3,8 +3,10 @@ import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
 write = True
-def write_message():
-    while write:
+stop = threading.Event()
+
+def write_message(stop):
+    while not stop.is_set():
         message = input()
         message = message.encode('utf-8')
         client.sendall(message)
@@ -27,9 +29,11 @@ def recieve_message():
     
 
 def create_connection():
-    message = threading.Thread(target=write_message, args=())
+    message = threading.Thread(target=write_message, args=(stop,))
     message.start()
+    stop.set()
     recieve_message()
+
     return
 
 
