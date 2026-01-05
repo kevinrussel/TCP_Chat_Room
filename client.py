@@ -1,6 +1,6 @@
 import threading
 import socket
-import threading, time
+import threading
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
 write = True
@@ -22,7 +22,6 @@ def recieve_message():
         message = message.decode('utf-8')
         print(f"{message}")
         if message == "Goodbye from server":
-            print("hitting")
             break
         elif len(message) == 0:
             print("DISCONNECTED FROM SERVER")
