@@ -46,3 +46,4 @@ How I am going about this:
 3) Okay now te connection is being established properly I need to add in a third connection and see what happens.
 4) There is this bug where I need to fix the recieving the messages.
 5) Okay so the next change I need to work on is the disconnecting part. 
+6) I fixed up the threading, the next thing I need to work on is closing up the port.
