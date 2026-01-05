@@ -2,7 +2,6 @@ import threading
 import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
-NAME = ''
 
 def write_message():
     message = input()
@@ -10,7 +9,6 @@ def write_message():
     message = message.encode('utf-8')
     client.sendall(message)
     while True:
-        message = input(f"{NAME}: ")
         message = message.encode('utf-8')
         client.sendall(message)
 

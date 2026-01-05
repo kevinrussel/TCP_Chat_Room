@@ -44,3 +44,4 @@ How I am going about this:
 1) The first things I need to do is to figure out how to connect to my server via a client.
 2) The second goald I have right now is to send a message from the server socke to client
 3) Okay now te connection is being established properly I need to add in a third connection and see what happens.
+4) There is this bug where I need to fix the recieving the messages.
