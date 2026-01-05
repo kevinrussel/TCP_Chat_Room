@@ -21,6 +21,7 @@ def handle_method(client_socket, message):
         message = client_socket.recv(4096)
         message = message.decode("utf-8")
         name = ''
+        print("hitting")
         for index,client in enumerate(CONNECTION):
             if (client == client_socket):
                 name = NICKNAME[index]
