@@ -21,11 +21,14 @@ def handle_method(client_socket, message):
         message = client_socket.recv(4096)
         message = message.decode("utf-8")
         print(f"in the handle method with message {message}")
-
+        name = ''
         for index,client in enumerate(CONNECTION):
             if (client == client_socket):
                 name = NICKNAME[index]
-        broad_cast_message(client_socket,message)
+        message = f"{name}: "+ message
+        for index, client in enumerate(CONNECTION):
+            if( client!= client_socket ):
+                broad_cast_message(client,message)
 
 
 def connect_method():
