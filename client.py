@@ -7,8 +7,7 @@ stop = threading.Event()
 
 def write_message(stop):
     
-    while not stop.is_set():
-            
+    while not stop.is_set():            
         message = input()
         message = message.encode('utf-8')
         client.sendall(message)
@@ -19,7 +18,7 @@ def write_message(stop):
 def recieve_message():
     
     while True:
-        message = client.recv(4096)
+        message = client.recv(4096) 
         
         message = message.decode('utf-8')
         
