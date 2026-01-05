@@ -35,9 +35,6 @@ def create_connection():
     recieve = threading.Thread(target=recieve_message, args=())
     recieve.start()
     recieve.join()
-    for t in threading.enumerate():
-        print("THREAD:", t.name, "daemon=", t.daemon, "alive=", t.is_alive())
-    print("MAIN ABOUT TO RETURN")
     return
     
 
