@@ -26,7 +26,7 @@ def recieve_message():
         print(f"{message}")
         if message == "Goodbye from server":
             break
-
+    
     return
     
 
