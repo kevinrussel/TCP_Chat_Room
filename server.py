@@ -23,7 +23,8 @@ def handle_method(client_socket, message):
         print(f"in the handle method with message {message}")
 
         for index,client in enumerate(CONNECTION):
-            if ()
+            if (client == client_socket):
+                name = NICKNAME[index]
         broad_cast_message(client_socket,message)
 
 
