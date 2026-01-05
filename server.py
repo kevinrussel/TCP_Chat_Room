@@ -13,12 +13,17 @@ def broad_cast_message (client_socket, message):
     return
 
 
+
+
 def handle_method(client_socket, message):
     broad_cast_message(client_socket, message)
-    print("about to hit the true")
     while True:
         message = client_socket.recv(4096)
         message = message.decode("utf-8")
+        print(f"in the handle method with message {message}")
+
+        for index,client in enumerate(CONNECTION):
+            if ()
         broad_cast_message(client_socket,message)
 
 
@@ -30,14 +35,13 @@ def connect_method():
         
         try:
             (client_socket, address) = server.accept()
-            print(f'The client socket_connection is {client_socket} and the address is {address}\n')
             message = "What is your nickname?".encode('utf-8')
             client_socket.sendall(message)
-            print("hitting pt 2")
             message = client_socket.recv(4096)
-            print("hitting pt 3")
             decoded_message = message.decode("utf-8")
             print(f"The client name is {decoded_message}\n")
+            CONNECTION.append(client_socket)
+            NICKNAME.append(decoded_message)
             thread = threading.Thread(target=handle_method, args=(client_socket,"Hello from Server"))
             thread.start()
         except KeyboardInterrupt:

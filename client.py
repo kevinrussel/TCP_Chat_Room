@@ -16,7 +16,7 @@ def write_message():
 def recieve_message():
     while True:
         message = client.recv(4096)
-        print(f"message recieved {message.decode("utf-8")}")
+        print(f"{message.decode("utf-8")}")
 
 
 def create_connection():
