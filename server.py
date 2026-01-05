@@ -20,15 +20,22 @@ def handle_method(client_socket, message):
     while True:
         message = client_socket.recv(4096)
         message = message.decode("utf-8")
-        print(f"in the handle method with message {message}")
         name = ''
         for index,client in enumerate(CONNECTION):
             if (client == client_socket):
                 name = NICKNAME[index]
-        message = f"{name}: "+ message
-        for index, client in enumerate(CONNECTION):
-            if( client!= client_socket ):
-                broad_cast_message(client,message)
+        if message == "exit":
+            for index, client in enumerate(CONNECTION):
+                if(client != client_socket):
+                    broad_cast_message(client,f"{name} has disconnected!")
+            CONNECTION.remove(client_socket)
+            NICKNAME.remove(name)
+            client_socket.close()
+        else:
+            message = f"{name}: "+ message
+            for index, client in enumerate(CONNECTION):
+                if( client!= client_socket ):
+                    broad_cast_message(client,message)
 
 
 def connect_method():
