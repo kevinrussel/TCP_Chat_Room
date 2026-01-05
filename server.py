@@ -42,7 +42,7 @@ def handle_method(client_socket, message):
                     broad_cast_message(client,message)
 
 
-def connect_method(server_alive):
+def connect_method():
     '''
     This method is used to create a connection for new clients.
     '''
@@ -74,8 +74,7 @@ server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((LOCAL_IP_ADDRESS,LOCAL_PORT_ADDRESS))
 ## How many connections we will support.
 server.listen(5)
-server_alive = threading.Event()
-connect_method(server_alive)
+connect_method()
 
 
 
