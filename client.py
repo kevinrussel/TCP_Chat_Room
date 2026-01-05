@@ -3,7 +3,7 @@ import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
 write = True
-stop = threading.Event()
+
 
 def write_message(stop):
     while True:            
@@ -21,9 +21,9 @@ def recieve_message():
         message = message.decode('utf-8')
         print(f"{message}")
         if message == "Goodbye from server":
-            stop.set()
+            print("hitting")
             break
-    
+    print("in here")
     return
     
 
@@ -31,8 +31,7 @@ def create_connection():
     message = threading.Thread(target=write_message, args=(stop,), daemon=True)
     message.start()
 
-    recieve = threading.Thread(target=recieve_message, args=())
-    recieve.start()
+    recieve_message()
     return
 
 
