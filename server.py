@@ -18,29 +18,35 @@ def broad_cast_message (client_socket, message):
 def handle_method(client_socket, message):
     broad_cast_message(client_socket, message)
     while True:
-        message = client_socket.recv(4096)
-        message = message.decode("utf-8")
-        name = ''
-        for index,client in enumerate(CONNECTION):
-            if (client == client_socket):
-                name = NICKNAME[index]
-        if message == "exit":
-            print(f"{name} is leaving from server")
-            for index, client in enumerate(CONNECTION):
-                if(client != client_socket):
-                    broad_cast_message(client,f"{name} has disconnected!")
-                else:
-                    broad_cast_message(client, "Goodbye from server")
-            CONNECTION.remove(client_socket)
-            NICKNAME.remove(name)
-            client_socket.close()
-            break
-        else:
-            message = f"{name}: "+ message
-            for index, client in enumerate(CONNECTION):
-                if( client!= client_socket ):
-                    broad_cast_message(client,message)
-
+        try:
+            message = client_socket.recv(4096)
+            if message == b'':
+                raise OSError
+            message = message.decode("utf-8")
+            
+            name = ''
+            for index,client in enumerate(CONNECTION):
+                if (client == client_socket):
+                    name = NICKNAME[index]
+            if message == "exit":
+                print(f"{name} is leaving from server")
+                for index, client in enumerate(CONNECTION):
+                    if(client != client_socket):
+                        broad_cast_message(client,f"{name} has disconnected!")
+                    else:
+                        broad_cast_message(client, "Goodbye from server")
+                CONNECTION.remove(client_socket)
+                NICKNAME.remove(name)
+                client_socket.close()
+                break
+            else:
+                message = f"{name}: "+ message
+                for index, client in enumerate(CONNECTION):
+                    if( client!= client_socket ):
+                        broad_cast_message(client,message)
+        except OSError as e:
+            print("you have hit an OS error")
+            
 
 # TODO: Handle in a try catch maybe?
 def new_connection_message(client_socket, client_name):
