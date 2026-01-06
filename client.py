@@ -7,7 +7,6 @@ write = True
 user_name = ''
 
 def get_name():
-    print("hitting")
     name = input()
     user_name = name
     name = name.encode('utf-8')
