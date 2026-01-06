@@ -48,5 +48,5 @@ How I am going about this:
 5) Okay so the next change I need to work on is the disconnecting part. 
 6) I fixed up the threading, the next thing I need to work on is closing up the port.
 7) There are a couple of things I still need to fix, for one we need to have error handling
-   additonally, I wan to clear
-   
+   additonally, I want to clear up some issues with multi client's joining in.
+8) I also want to change up the server such that when a new user joins, all other users will get a message saying " x user has joined!"
