@@ -3,20 +3,9 @@ import socket
 import threading
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1',8080))
-write = True
-user_name = ''
-
-def get_name():
-    name = input()
-    user_name = name
-    name = name.encode('utf-8')
-    client.sendall(name)
-    return user_name
 
 def write_message():
-    user_name = get_name()
-    while True:
-        print(f"{user_name}: ", end='')            
+    while True:            
         message = input()
         message = message.encode('utf-8')
         client.sendall(message)
