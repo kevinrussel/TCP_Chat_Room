@@ -42,6 +42,27 @@ def handle_method(client_socket, message):
                     broad_cast_message(client,message)
 
 
+
+def new_connection_message(client_socket, client_name):
+
+    for index, connections in enumerate(CONNECTION):
+        if connections != client_socket:
+            broad_cast_message
+
+
+## TODO: Handle in a try catch.
+def handle_new_connection(client_socket):
+            message = "What is your nickname?".encode('utf-8')
+            client_socket.sendall(message)
+            message = client_socket.recv(4096)
+            decoded_message = message.decode("utf-8")
+            print(f"The client name is {decoded_message}\n")
+            CONNECTION.append(client_socket)
+            NICKNAME.append(decoded_message)
+            new_connection_message(client_socket,decoded_message)
+
+
+
 def connect_method():
     '''
     This method is used to create a connection for new clients.
@@ -50,13 +71,7 @@ def connect_method():
         
         try:
             (client_socket, address) = server.accept()
-            message = "What is your nickname?".encode('utf-8')
-            client_socket.sendall(message)
-            message = client_socket.recv(4096)
-            decoded_message = message.decode("utf-8")
-            print(f"The client name is {decoded_message}\n")
-            CONNECTION.append(client_socket)
-            NICKNAME.append(decoded_message)
+            handle_new_connection(client_socket)
             thread = threading.Thread(target=handle_method, args=(client_socket,"Hello from Server"))
             thread.start()
         except KeyboardInterrupt:
