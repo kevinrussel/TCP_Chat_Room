@@ -47,3 +47,6 @@ How I am going about this:
 4) There is this bug where I need to fix the recieving the messages.
 5) Okay so the next change I need to work on is the disconnecting part. 
 6) I fixed up the threading, the next thing I need to work on is closing up the port.
+7) There are a couple of things I still need to fix, for one we need to have error handling
+   additonally, I wan to clear
+   
