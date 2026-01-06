@@ -50,3 +50,5 @@ How I am going about this:
 7) There are a couple of things I still need to fix, for one we need to have error handling
    additonally, I want to clear up some issues with multi client's joining in.
 8) I also want to change up the server such that when a new user joins, all other users will get a message saying " x user has joined!"
+9) You know what I want to add? When the user is going to type, their username should already be on the screen. That could be a simple print with no new char.
+10) MAJOR BUG, IN A TWO USER SYSTEM, WHEN ONE USER DISCONNECTS CLIENT GOES HAYWIRE.
