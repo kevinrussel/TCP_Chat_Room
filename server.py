@@ -44,8 +44,16 @@ def handle_method(client_socket, message):
                 for index, client in enumerate(CONNECTION):
                     if( client!= client_socket ):
                         broad_cast_message(client,message)
-        except OSError as e:
-            print("you have hit an OS error")
+        except OSError:
+            name = ''
+            for index, client in enumerate(CONNECTION):
+                if client == client_socket:
+                    name = NICKNAME[index]
+            CONNECTION.remove(client_socket)
+            NICKNAME.remove(name)
+            client_socket.close()
+            for index, client in enumerate(CONNECTION):
+                broad_cast_message(client,f"{name} has lost connection with server")
             
 
 # TODO: Handle in a try catch maybe?
