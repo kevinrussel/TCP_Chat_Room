@@ -42,12 +42,13 @@ def handle_method(client_socket, message):
                     broad_cast_message(client,message)
 
 
-
+# TODO: Handle in a try catch maybe?
 def new_connection_message(client_socket, client_name):
 
     for index, connections in enumerate(CONNECTION):
         if connections != client_socket:
-            broad_cast_message
+            message = f"{client_name} has joined the chat!"
+            broad_cast_message(connections,message)
 
 
 ## TODO: Handle in a try catch.
@@ -60,6 +61,7 @@ def handle_new_connection(client_socket):
             CONNECTION.append(client_socket)
             NICKNAME.append(decoded_message)
             new_connection_message(client_socket,decoded_message)
+            return
 
 
 
@@ -67,8 +69,7 @@ def connect_method():
     '''
     This method is used to create a connection for new clients.
     '''
-    while True:
-        
+    while True:        
         try:
             (client_socket, address) = server.accept()
             handle_new_connection(client_socket)
