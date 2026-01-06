@@ -12,10 +12,10 @@ def get_name():
     user_name = name
     name = name.encode('utf-8')
     client.sendall(name)
-
+    return user_name
 
 def write_message():
-    get_name()
+    user_name = get_name()
     while True:
         print(f"{user_name}: ", end='')            
         message = input()
