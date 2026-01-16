@@ -1,54 +1,33 @@
-### This is a simple TCP chatroom with a bit of functionaility that we are doing.
+# Simple TCP Server:
+
+<img src="TCP-Chat-300x164.webp" width="400" alt="Demo Screenshot">
 
 
-#### Main goals of this project
-- This project is for a couple reasons. We are learning how to use threading, and sockets. How to connect to a server, as well how to handle connections.
+This is a simple tcp server that I have created. The purpose of this project was to familiraize myself with websockets and intro into networking.
 
-## Server Class
+This was quite a fun project, albiet quite easy, so I don't doubt that anyone in the future who looks at this code will find it rudimentary and easy, but honestly, this was an exercise of the mind, to learn what little I can before we delegate that task to LLM's.
 
-- This will be the server which will handle ther connections and forward the messages to the other client.
-- As well as handling client's disconnecting. 
+---
+### The Files and their associated uses:
 
-#### Server Class Methods
-Import threading and import socket
+# Server.py:
+This is the brains of the operation. The task of this file is simple, to create a localhost server that clients can bind to.
 
-**Broadcast Method**
-- This method sends a method to all connections.
+We used threading to ensure that no blocking code was causing only one client to come in.
 
-**Handle Method**
-- Sends message to broadcast method
-- If this fails, close the connection
-- Tells others connections that the user left.
+That being said, there is a ton of work left to do on error handling, however for a rudimentary server, this will suffice. In the future, I will be making an advanced TCP chatroom, and we will be error hardening it with closed connections.
 
-**Receive Method**
-- Receieve client connection
-- Tells other users that the client is connected.
+--- 
+# Client.py:
+ This is the client file, we are asked for a name and the messages from other clients are printed here.
+
+ There is much work to be done in the client, one notable error that I wish to have for future verisons is such that when I type a message, the user's name will appear before the message. There was this weird bug that wouldn't let me have it in such a way that the user could see their own "username" with the message they wrote. But alas, that wil be for future iterations.
 
 
-## Client Method
+---
+### Final Notes:
+I think it takes a lot out of me to find the time to do these projects, and while I might not see tramendous swing day to day, I like to imagine that little by little I am improving.
 
-Import Threading and Socket
+This is my final send off. From this moment, forward, I am considering this project finished to the scope of what I initially set out.
 
-***Hint***: We shoiuld have two threads taking place, one that is the recieve and one that is write.
-
-### Recieve method:
-- Recieve the message from the server
-- Close connection if there is an error
-
-### Write method:
-- It should send a write command.
-
-
-
-How I am going about this:
-1) The first things I need to do is to figure out how to connect to my server via a client.
-2) The second goald I have right now is to send a message from the server socke to client
-3) Okay now te connection is being established properly I need to add in a third connection and see what happens.
-4) There is this bug where I need to fix the recieving the messages.
-5) Okay so the next change I need to work on is the disconnecting part. 
-6) I fixed up the threading, the next thing I need to work on is closing up the port.
-7) There are a couple of things I still need to fix, for one we need to have error handling
-   additonally, I want to clear up some issues with multi client's joining in.
-8) I also want to change up the server such that when a new user joins, all other users will get a message saying " x user has joined!"
-9) You know what I want to add? When the user is going to type, their username should already be on the screen. That could be a simple print with no new char.
-10) MAJOR BUG, IN A TWO USER SYSTEM, WHEN ONE USER DISCONNECTS CLIENT GOES HAYWIRE.
+Kevin Russel: Jan/9/2026.
