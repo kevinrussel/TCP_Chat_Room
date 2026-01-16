@@ -10,7 +10,7 @@ def write_message():
         message = message.encode('utf-8')
         client.sendall(message)
 
-
+def is_valid_int(s: str) -> bool:
 
 # We are going to be making a client right now for our server
 def recieve_message():
